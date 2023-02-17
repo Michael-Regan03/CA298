@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- the page title goes here --> 
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ book.Title }}</h5>
+          <p class="card-text">{{book.Genre }}</p>
+        </div>
+      </div>
+      
+      {% for b in borrowed %}
+
+      <p class="card-title"><a href="{% url 'Customer' b.CustomerID %}">{{ b.CustomerID }}</a></p>
+      {% endfor %}
+
+{% endblock %}
