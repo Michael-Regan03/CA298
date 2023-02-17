@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+  <!-- the page title goes here --> 
+{% endblock %}
+
+{% block content %}
+  <!-- content specific to this page goes here --> 
+  {% for b in books %}
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'single_book' b.ID %}">{{ b.Title }}</a></h5>
+          <p class="card-text">{{b.Author }}</p>
+          <p class="card-text"><a href="{% url 'Genre' b.Genre %}">{{b.Genre}}</a></p>
+          <p class="card-text"><a href="{% url 'Genre_and_ReleaseDate' b.Genre b.ReleaseYear %}">{{b.ReleaseYear}}</a></p>
+        </div>
+      </div>
+
+
+{% endfor %}
+{% endblock %}
