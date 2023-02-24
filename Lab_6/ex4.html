@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex3.html</title>
+  </head>
+  <body>
+    <form onsubmit="test(event)">
+      <label for="name-test">Enter two numbers:</label>
+      <input  id="number" name="name">
+      <input  id="number" name="name">
+      <button type="submit"></button>
+    </form>
+
+    <script>
+      function test(event) {
+        event.preventDefault();
+
+
+        const numbers = document.getElementsByTagName("label");
+        const number1 = paragraphs[0];
+        const number2 = paragraphs[1];
+
+        const result = number1 + number2;
+
+        if (name != ''){
+          const results = document.createElement('p');
+          results.textContent = `${result}!`;
+          document.body.appendChild(results); 
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex1.html</title>
+    <style>
+        .default{
+            color: black;
+        }
+        
+        .red{
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <p>Some text</p>
+    <button onclick="changeColor()"></button>
+    <script>
+        function changeColor() {
+        const paragraphs = document.getElementsByTagName("p");
+        const paragraph = paragraphs[0];
+        paragraph.classList.add('red');
+      }
+    </script>
+  </body>
+</html>
