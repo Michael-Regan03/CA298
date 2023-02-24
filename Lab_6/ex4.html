@@ -6,7 +6,7 @@
   <body>
     <form onsubmit="test(event)">
       <label for="name-test">Enter two numbers:</label>
-      <input  id="number" name="name">
+      <input  id="number" name="number1">
       <input  id="number" name="name">
       <button type="submit"></button>
     </form>
@@ -17,8 +17,8 @@
 
 
         const numbers = document.getElementsByTagName("label");
-        const number1 = paragraphs[0];
-        const number2 = paragraphs[1];
+        const number1 = numbers[0];
+        const number2 = numbers[1];
 
         const result = number1 + number2;
 
