@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<h1>Create a Pizza</h1>
+
+<form method="post">
+    {% csrf_token %}
+   
+    <p>Enter Size: {{ form.size }}</p>
+  
+    <p>Enter Crust: {{ form.crust }}</p>
+  
+    <p>Enter sauce: {{ form.sauce }}</p>
+  
+    <p>Enter Cheese: {{ form.cheese }}</p>
+
+    <h1>Meat</h1>
+
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{% static 'pepperoni.jpeg' %}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Pepperoni</h5>
+          <p class="card-text">{{ form.Pepperoni }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{% static 'chicken.jpeg' %}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Chicken</h5>
+          <p class="card-text">{{ form.Chicken }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{% static 'ham.jpeg' %}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Ham</h5>
+          <p class="card-text">{{ form.Ham }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1>Fruit & Vegetables</h1>
+
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{% static 'pineapple.jpeg' %}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Pineapple</h5>
+          <p class="card-text">{{ form.Pineapple }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{% static 'peppers.jpeg' %}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Peppers</h5>
+          <p class="card-text">{{ form.Peppers }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{% static 'mushrooms.jpeg' %}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Mushrooms</h5>
+          <p class="card-text">{{ form.Mushrooms }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{% static 'onions.jpeg' %}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Onions</h5>
+          <p class="card-text">{{ form.Onions }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <button type="submit">Order</button>
+</form>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+
+
+
+
+
+<div class="card text-bg-dark">
+    <img src="{% static 'pizza3.jpg' %}" class="card-img" alt="...">
+    <div class="card-img-overlay" class="text-{black}">
+      <h5 class="card-title">Order Confirmed</h5>
+      <p class="card-text">Size: {{ delivery.pizza.size }}</p>
+      <p class="card-text">Sauce: {{ delivery.pizza.sauce }}</p>
+      <p class="card-text">Crust: {{ delivery.pizza.crust }}</p>
+      <p class="card-text">Cheese: {{ delivery.pizza.cheese }}</p>
+      <p class="card-text">Toppings:</p>
+      {% for t in toppings %} 
+    <p class="card-text"><small>{{ t }}</small></p>
+    {% endfor %}
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+{% endblock %}
