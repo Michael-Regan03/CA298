@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- the page title goes here --> 
+    {% for c in customer %}
+    <h1>{{ c.Name }}</h1>
+    {% endfor %}
+    
+    <h2>Books in possession</h2>
+    
+    {% for a in active %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'single_book' a.BookID %}">{{ a.BookID }}</a></h5>
+        </div>
+      </div>
+    {% endfor %}
+      
+      
+    <h2>Previously borrowed books</h2>
+    
+    {% for r in returned %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'single_book' r.BookID %}">{{ r.BookID }}</a></h5>
+        </div>
+      </div>
+    {% endfor %}
+
+{% endblock %}

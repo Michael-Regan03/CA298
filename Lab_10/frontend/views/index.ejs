@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+  <body>
+    <div id="container"></div>
+    <form id="book-form">
+      
+    Enter Title <input type="text" id="Title">
+    Enter Author: <input type="text" id="Author">
+    Enter Genre: <input type="text" id="Genre">
+    Enter ReleaseYear: <input type="text" id="ReleaseYear">
+    Enter Number in Inventory: <input type="number" id="NumberInInventory">
+
+    <button type="submit">Create new book</button>
+		<script>
+			
+      function showAllBooks(){
+      let container = document.getElementById("container"); // load the container
+     container.innerHTML = ""; // delete the content already inside the container
+      let req = "http://127.0.0.1:8000/apibook/"
+      fetch(req) // make a request to this endpoint
+        .then(response => response.json()) // with our response, get the json data returned
+        .then(data =>{
+         container.innerHTML += `<ol id="book-list"></ol>`; // create an empty list 
+        data.forEach(elem=>{
+        
+        let bookList = document.getElementById("book-list"); // load the book list we just created
+        let bookString = `<li>${elem.Title} - ${elem.Author}</li>`;
+        bookList.innerHTML += bookString;
+        bookList.innerHTML += "<button onclick=viewSingleBook('"+ `${elem.ID}` + "')>View</button>"; // Creating button to view singe book and passing the books id into the function
+      })
+    }); 
+}
+ 
+showAllBooks()
+
+      function viewSingleBook(bookID){
+        let container = document.getElementById("container"); // load the container
+        container.innerHTML = ""; // delete the content already inside the container
+        
+        container.innerHTML += "<button onclick=showAllBooks()>BACK</button>";
+        
+        let req = `http://127.0.0.1:8000/apibook/`;
+        req += bookID + "/"
+        let bookList = document.getElementById("book-list"); // load the book list we just created
+        fetch(req) // make a request to this endpoint
+          .then(response => response.json()) // with our response, get the json data returned
+          .then(data =>{
+            let bookString = `<h1>${data.Title}</h1> <h2>${data.Author}</h2><p>Genre: ${data.Genre}</p><p>Release Year:  ${data.ReleaseYear}</p><p>Number in Inventory: ${data.NumberInInventory}</p>`; // creating the contents of the page
+            container.innerHTML += bookString; // adding the contents of the page to teh container
+        });             
+      }
+			
+      
+      
+      let form = document.getElementById("book-form");
+        form.addEventListener("submit", (e)=>{
+	      e.preventDefault();
+        /* Loading variables from the form */
+        let Title = document.getElementById("Title").value; 
+		    let Author = document.getElementById("Author").value;
+		    let ReleaseYear = document.getElementById("ReleaseYear").value;
+		    let Genre = document.getElementById("Genre").value;
+        let NumberInInventory = document.getElementById("NumberInInventory").value;
+		    
+        /* Constructing Json data */
+        let data = {Title, Author, ReleaseYear, Genre, NumberInInventory};
+		    fetch('http://127.0.0.1:8000/apibook/', { //address to framework
+			  method: 'POST', //making post request
+			  headers: {
+				  'Content-Type': 'application/json'
+			  },
+			  body: JSON.stringify(data)
+		    })
+		  .then(response => {
+			  window.location.reload(); //refreshing the page
+		    })
+		  .catch(error => {
+			  console.error('Error:', error);  //error handling
+		  });	
+});
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </script>
+		</body>
+</html>
